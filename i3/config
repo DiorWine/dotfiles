@@ -1,0 +1,259 @@
+######################### 设置工作区 #########################
+set $mod Mod4
+set $mov Mod1
+set $WS1  1:  
+set $WS2  2: W
+set $WS3  3: E
+set $WS4  4: R
+set $WS5  5: Y
+set $WS6  6: U
+set $WS7  7: I
+set $WS8  8: 
+set $WS9  9: 
+set $WS0 10: 
+
+########################## 主题美化 ##########################
+
+# font and background
+font pango: SauceCodePro Nerd Font Medium 15
+# exec --no-startup-id feh --bg-scale /home/wine/Pictures/wallhaven-geometry.png
+
+########################## 自定义脚本 ############################
+exec --no-startup-id /home/wine/.config/i3/autoswitch.sh
+exec --no-startup-id /home/wine/.config/i3/autopwr.sh
+exec --no-startup-id /home/wine/.config/i3/autotouch.sh
+
+
+######################### gnome 依赖 ##############################
+
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings &
+# 通知项
+exec --no-startup-id /usr/lib/notification-daemon/notification-daemon &
+# chrome等钥匙环
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
+
+######################### touchpad 设置 #########################
+
+# Tap to click
+# exec xinput set-prop 16 321 1
+
+######################### fn 功能键设置 #########################
+
+# sound control
+bindsym XF86AudioRaiseVolume exec amixer set Master playback 5+
+bindsym XF86AudioLowerVolume exec amixer set Master playback 5-
+bindsym XF86AudioMute exec amixer set Master toggle
+
+######################### 快捷键设置 #########################
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+#bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec rofi -show run
+bindsym $mod+Shift+d exec rofi -show drun
+bindsym $mod+Shift+w exec rofi -show window
+bindsym $mod+Shift+s exec rofi -show ssh
+
+# start the files mananger
+bindsym $mod+t exec nautilus
+
+# start the Web browser
+bindsym $mod+g exec google-chrome --password-store=gnome
+
+# start the screen shot
+bindsym Print exec shutter -s
+
+bindsym $mod+backslash exec gnome-terminal -x vim ~/.config/i3/config
+
+#########################焦点与窗口#########################
+
+# Use Mouse+Alt to drag floating windows to their wanted position
+floating_modifier Mod1
+
+# change focus
+bindsym $mov+j focus left
+bindsym $mov+k focus right
+bindsym $mov+l focus down
+bindsym $mov+h focus up
+
+# alternatively, you can use the cursor keys:
+bindsym $mov+Left focus left
+bindsym $mov+Down focus down
+bindsym $mov+Up focus up
+bindsym $mov+Right focus right
+
+# move focused window
+bindsym $mov+Shift+j move left
+bindsym $mov+Shift+k move right
+bindsym $mov+Shift+l move down
+bindsym $mov+Shift+h move up
+
+# alternatively, you can use the cursor keys:
+bindsym $mov+Shift+Left move left
+bindsym $mov+Shift+Down move down
+bindsym $mov+Shift+Up move up
+bindsym $mov+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mov+b split h
+
+# split in vertical orientation
+bindsym $mov+v split v
+
+# split in toggle orientation
+bindsym $mov+t split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mov+f fullscreen toggle
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#########################其他模式###########################
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+x layout toggle split
+
+# toggle tiling / floating
+bindsym $mov+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mov+space focus mode_toggle
+
+# focus the parent container
+bindsym $mov+a focus parent
+
+# focus the child container
+bindsym $mov+d focus child
+
+#########################工作区操作#########################
+
+# switch to workspace
+bindsym $mov+q workspace $WS1
+bindsym $mov+w workspace $WS2
+bindsym $mov+e workspace $WS3
+bindsym $mov+r workspace $WS4
+bindsym $mov+y workspace $WS5
+bindsym $mov+u workspace $WS6
+bindsym $mov+i workspace $WS7
+bindsym $mov+semicolon workspace $WS8
+bindsym $mov+p workspace $WS9
+bindsym $mov+apostrophe workspace $WS0
+
+# move focused container to workspace
+bindsym $mov+shift+q move container to workspace $WS1, workspace $WS1
+bindsym $mov+shift+w move container to workspace $WS2, workspace $WS2
+bindsym $mov+shift+e move container to workspace $WS3, workspace $WS3
+bindsym $mov+shift+r move container to workspace $WS4, workspace $WS4
+bindsym $mov+shift+y move container to workspace $WS5, workspace $WS5
+bindsym $mov+shift+u move container to workspace $WS6, workspace $WS6
+bindsym $mov+shift+i move container to workspace $WS7, workspace $WS7
+bindsym $mov+shift+semicolon move container to workspace $WS8, workspace $WS8
+bindsym $mov+shift+p move container to workspace $WS9, workspace $WS9
+bindsym $mov+shift+apostrophe move container to workspace $WS0, workspace $WS0
+
+#########################系统操作###########################
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+#########################电源管理###########################
+set $mode_system  lock(L) logout(O) reboot(R) shutdown(S) exit(Esc)
+bindsym $mod+c mode "$mode_system"
+mode "$mode_system" {
+    # bindsym l exec --no-startup-id i3lock -i ~/Pictures/wallpaper/lock/landscape.jpg, mode "default"
+    bindsym l exec --no-startup-id i3lock-fancy, mode "default"
+    bindsym o exec --no-startup-id i3-msg exit, mode "default"
+    bindsym o exec --no-startup-id i3-msg exit, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym s exec --no-startup-id systemctl poweroff, mode "default"
+    bindsym Escape mode "default"
+}
+
+########################other config########################
+
+# 屏保关闭
+exec --no-startup-id xset s 0
+
+# 透明
+exec --no-startup-id compton -b
+
+# fasten software
+assign [class="i3-sensible-terminal"] $WS1
+assign [class="google-chrome"] $WS2
+assign [class="code*"] $WS0
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+
+new_window pixel 3
+new_float normal
+hide_edge_borders smart
+
+bar {
+    # output eDP-1
+    tray_output primary
+
+    status_command ~/.config/i3/conky-i3bar
+    strip_workspace_numbers yes
+    
+    separator_symbol ""
+    colors { 
+        # background #002b36A0
+        background #00000055
+        statusline #00000000
+        separator  #3399FF 
+        # 工作区颜色         边框    背景    文字 
+        focused_workspace  #3399FF #073642A0 #FFFFFF 
+        active_workspace   #FFFFFF #111111A0 #FFFFFF 
+        inactive_workspace #111111 #111111A0 #FFFFFF 
+        urgent_workspace   #990000 #FFFFFFA0 #FF0000
+        binding_mode       #990000 #990000A0 #FFFFFF 
+    }
+
+}
+
+# bar {
+#     output DP-1
+#     font pango: SauceCodePro Nerd Font Medium 12
+#     status_command ~/bin/conky-i3bar
+#     strip_workspace_numbers yes
+# }
