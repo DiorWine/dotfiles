@@ -10,10 +10,10 @@ rm -rf ~/.config/compton.conf
 cd ~/.config/
 ln -s $compton_PATH/compton.conf .
 
-rm -rf ~/.config/rofi/*
-cd ~/.config/rofi/
-ln -s $rofi_PATH/* .
+rm -rf ~/.config/rofi
+cd ~/.config/
+ln -s $rofi_PATH .
 
-rm -rf ~/.config/i3/*
-cd ~/.config/i3/
-ln -s $i3_PATH/* .
+rm -rf ~/.config/i3
+cd ~/.config
+ln -s $i3_PATH .

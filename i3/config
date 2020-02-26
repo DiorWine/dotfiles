@@ -32,11 +32,6 @@ exec --no-startup-id /usr/lib/notification-daemon/notification-daemon &
 # chrome等钥匙环
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
-######################### touchpad 设置 #########################
-
-# Tap to click
-# exec xinput set-prop 16 321 1
-
 ######################### fn 功能键设置 #########################
 
 # sound control
@@ -52,13 +47,13 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# start rofi (a program launcher)
 bindsym $mod+d exec rofi -show run
 bindsym $mod+Shift+d exec rofi -show drun
 bindsym $mod+Shift+w exec rofi -show window
 bindsym $mod+Shift+s exec rofi -show ssh
+
+bindsym $mod+l exec ~/.config/i3/nmcli_rofi
 
 # start the files mananger
 bindsym $mod+t exec nautilus
@@ -200,7 +195,6 @@ bindsym $mod+c mode "$mode_system"
 mode "$mode_system" {
     # bindsym l exec --no-startup-id i3lock -i ~/Pictures/wallpaper/lock/landscape.jpg, mode "default"
     bindsym l exec --no-startup-id i3lock-fancy, mode "default"
-    bindsym o exec --no-startup-id i3-msg exit, mode "default"
     bindsym o exec --no-startup-id i3-msg exit, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym s exec --no-startup-id systemctl poweroff, mode "default"
