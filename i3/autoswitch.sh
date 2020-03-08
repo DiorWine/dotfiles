@@ -1,14 +1,15 @@
 #!/bin/bash
 # backgroud auto skip
 
+BG_FOLDER=~/Pictures/wallpaper/
 
 while $(true)
 do
     time_now=$(date +%H)
     if [ $time_now -gt 8 ] && [ $time_now -lt 18 ]; then
-        feh --randomize --bg-fill ~/Pictures/wallpaper/daytime/*
+        feh --randomize --bg-fill $BG_FOLDER/daytime/*
     else
-        feh --randomize --bg-fill ~/Pictures/wallpaper/night/*
+        feh --randomize --bg-fill $BG_FOLDER/night/*
     fi
     sleep 30m
 done

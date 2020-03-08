@@ -19,9 +19,9 @@ font pango: SauceCodePro Nerd Font Medium 15
 # exec --no-startup-id feh --bg-scale /home/wine/Pictures/wallhaven-geometry.png
 
 ########################## 自定义脚本 ############################
-exec --no-startup-id /home/wine/.config/i3/autoswitch.sh
-exec --no-startup-id /home/wine/.config/i3/autopwr.sh
-exec --no-startup-id /home/wine/.config/i3/autotouch.sh
+exec /home/wine/.config/i3/autoswitch.sh
+exec /home/wine/.config/i3/autopwr.sh
+exec /home/wine/.config/i3/autotouch.sh
 
 
 ######################### gnome 依赖 ##############################
@@ -54,6 +54,7 @@ bindsym $mod+Shift+w exec rofi -show window
 bindsym $mod+Shift+s exec rofi -show ssh
 
 bindsym $mod+l exec ~/.config/i3/nmcli_rofi
+bindsym $mod+b exec /home/wine/WorkSpace/bilibili_rofi/bilibili_rofi
 
 # start the files mananger
 bindsym $mod+t exec nautilus
@@ -204,7 +205,7 @@ mode "$mode_system" {
 ########################other config########################
 
 # 屏保关闭
-exec --no-startup-id xset s 0
+# exec --no-startup-id xset s 0
 
 # 透明
 exec --no-startup-id compton -b
@@ -214,14 +215,18 @@ assign [class="i3-sensible-terminal"] $WS1
 assign [class="google-chrome"] $WS2
 assign [class="code*"] $WS0
 
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-
+# i3 client
 new_window pixel 3
 new_float normal
 hide_edge_borders smart
+# 窗口颜色       边框    背景    文字
+client.focused #859900 #2AA198 #FFFFFF
+# client.unfocused
+# client.focused_inactive
+# client.urgent
 
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
 bar {
     # output eDP-1
     tray_output primary
