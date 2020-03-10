@@ -38,7 +38,7 @@ def run_rofi(alts, prompt="WIFI", strip=True, force_alts=False, max_lines=20):
     """
     lines = max(min(max_lines, len(alts)), 1);
 
-    rofi = Popen(["rofi", "-i", "-dmenu", "-l", str(lines), "-p", prompt, "-a", "0-"+str(lines-5)], stdout=PIPE, stdin=PIPE)
+    rofi = Popen(["rofi", "-i", "-dmenu", "-l", str(lines), "-p", prompt, "-a", "0-"+str(lines-4)], stdout=PIPE, stdin=PIPE)
     selected = rofi.communicate("\n".join(alts).encode("utf-8"))[0].decode("utf-8")
 
     if strip:

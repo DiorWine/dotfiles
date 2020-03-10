@@ -53,6 +53,7 @@ bindsym $mod+Shift+d exec rofi -show drun
 bindsym $mod+Shift+w exec rofi -show window
 bindsym $mod+Shift+s exec rofi -show ssh
 
+bindsym $mod+p exec ~/.config/i3/monitors.sh
 bindsym $mod+l exec ~/.config/i3/nmcli_rofi
 bindsym $mod+b exec /home/wine/WorkSpace/bilibili_rofi/bilibili_rofi
 

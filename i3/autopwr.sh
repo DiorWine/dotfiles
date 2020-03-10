@@ -13,7 +13,7 @@ do
 
     if [ $power_percent -lt $LOW ] && [ $power_status = "Discharging" ]; then
         xrandr --output eDP-1 --brightness 0.4
-        rofi -theme /usr/share/rofi/themes/Pop-Dark.rasi -e "<span color='red'><b>电量低，请充电！</b></span>"
+        rofi -e "<span color='#DC322F'><b>电量低，请充电！</b></span>" -markup
         
         # 循环提醒
         while [ $power_percent -lt $LOW ] && [ $power_status = "Discharging" ]
