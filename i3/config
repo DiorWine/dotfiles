@@ -35,9 +35,9 @@ exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 ######################### fn 功能键设置 #########################
 
 # sound control
-bindsym XF86AudioRaiseVolume exec amixer set Master playback 5+
-bindsym XF86AudioLowerVolume exec amixer set Master playback 5-
-bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 ######################### 快捷键设置 #########################
 
