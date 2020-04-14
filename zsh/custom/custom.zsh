@@ -1,7 +1,9 @@
 DEFAULT_USER="wine"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 dotfile="/home/wine/Documents/dotfiles/"
+export EDITOR=nvim
 
+alias ra="ranger"
 # alias vi="vim -X"
 alias vi="nvim"
 # alias cls="print '\033c'"

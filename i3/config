@@ -19,10 +19,7 @@ font pango: SauceCodePro Nerd Font Medium 15
 # exec --no-startup-id feh --bg-scale /home/wine/Pictures/wallhaven-geometry.png
 
 ########################## 自定义脚本 ############################
-exec /home/wine/.config/i3/autoswitch.sh
-exec /home/wine/.config/i3/autopwr.sh
-exec /home/wine/.config/i3/autotouch.sh
-
+exec --no-startup-id /home/wine/.config/i3/auto_startup.sh
 
 ######################### gnome 依赖 ##############################
 
@@ -43,6 +40,7 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mov+Return exec i3-sensible-terminal && i3 floating toggle
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -61,7 +59,7 @@ bindsym $mod+b exec /home/wine/WorkSpace/bilibili_rofi/bilibili_rofi
 bindsym $mod+t exec nautilus
 
 # start the Web browser
-bindsym $mod+g exec google-chrome --password-store=gnome
+bindsym $mod+g exec google-chrome --password-store=gnome --proxy-server="http://127.0.0.1:6666"
 
 # start the screen shot
 bindsym Print exec shutter -s
