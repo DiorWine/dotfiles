@@ -63,6 +63,7 @@ bindsym $mod+g exec google-chrome --password-store=gnome --proxy-server="http://
 
 # start the screen shot
 bindsym Print exec shutter -s
+bindsym $mod+Shift+p exec shutter -s
 
 bindsym $mod+backslash exec gnome-terminal -x vim ~/.config/i3/config
 
