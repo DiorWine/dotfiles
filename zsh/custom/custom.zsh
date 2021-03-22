@@ -11,7 +11,6 @@ alias cls="clear"
 alias background="feh --bg-fill"
 
 #ros config
-source /opt/ros/melodic/setup.zsh
 # source ~/WorkSpace/RL_agent/devel/setup.zsh
 # export ROS_MASTER_URI=http://B360M:11311/
 # export ROS_HOSTNAME=XXPro
