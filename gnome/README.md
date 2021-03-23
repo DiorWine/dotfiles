@@ -16,3 +16,7 @@ you can delete sessions in:
 ## gnome chrome tools
 
 https://extensions.gnome.org/extension/19/user-themes/
+
+Argos
+Dash to Dock
+system-monitor
