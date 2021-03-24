@@ -7,9 +7,9 @@ while $(true)
 do
     time_now=$(date +%H)
     if [ $time_now -gt 8 ] && [ $time_now -lt 18 ]; then
-        feh --randomize --bg-fill $BG_FOLDER/daytime/*
+        feh --recursive --randomize --bg-fill $BG_FOLDER/daytime/*
     else
-        feh --randomize --bg-fill $BG_FOLDER/night/*
+        feh --recursive --randomize --bg-fill $BG_FOLDER/night/*
     fi
     sleep 30m
 done
