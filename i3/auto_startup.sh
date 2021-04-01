@@ -17,7 +17,7 @@ do
         exec /home/wine/software/Clash/Startup.sh
         break
     else
-        /bin/bash /home/wine/software/Clash/clash-linux-amd64 &
+        sh -c /home/wine/software/Clash/clash-linux-amd64 &
     fi
     sleep 1
 done

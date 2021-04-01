@@ -15,19 +15,9 @@ set $WS0 10: 
 ########################## 主题美化 ##########################
 
 # font and background
-font pango: SauceCodePro Nerd Font Medium 15
+font pango: SauceCodePro Nerd Font Medium 13
 # exec --no-startup-id feh --bg-scale /home/wine/Pictures/wallhaven-geometry.png
 
-########################## 自定义脚本 ############################
-exec --no-startup-id /home/wine/.config/i3/auto_startup.sh
-
-######################### gnome 依赖 ##############################
-
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings &
-# 通知项
-exec --no-startup-id /usr/lib/notification-daemon/notification-daemon &
-# chrome等钥匙环
-exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
 ######################### fn 功能键设置 #########################
 
@@ -59,13 +49,13 @@ bindsym $mod+b exec /home/wine/WorkSpace/bilibili_rofi/bilibili_rofi
 bindsym $mod+t exec nautilus
 
 # start the Web browser
-bindsym $mod+g exec google-chrome --password-store=gnome --proxy-server="http://127.0.0.1:6666"
+bindsym $mod+g exec google-chrome --password-store=gnome --proxy-server="http://127.0.0.1:7890"
 
 # start the screen shot
 bindsym Print exec shutter -s
 bindsym $mod+Shift+p exec shutter -s
 
-bindsym $mod+backslash exec gnome-terminal -x vim ~/.config/i3/config
+bindsym $mod+backslash exec i3-sensible-terminal -e vi ~/.config/i3/config
 
 #########################焦点与窗口#########################
 
@@ -97,10 +87,10 @@ bindsym $mov+Shift+Up move up
 bindsym $mov+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mov+b split h
+bindsym $mov+b split h;exec notify-send 'tile horizontally'
 
 # split in vertical orientation
-bindsym $mov+v split v
+bindsym $mov+v split v;exec notify-send 'tile vertically'
 
 # split in toggle orientation
 bindsym $mov+t split toggle
@@ -204,16 +194,11 @@ mode "$mode_system" {
 
 ########################other config########################
 
-# 屏保关闭
-# exec --no-startup-id xset s 0
-
-# 透明
-exec --no-startup-id compton -b
 
 # fasten software
-assign [class="i3-sensible-terminal"] $WS1
-assign [class="google-chrome"] $WS2
-assign [class="code*"] $WS0
+# assign [class="Gnome-"] $WS1 ## only work
+# assign [class="google-chrome"] $WS2
+# assign [class="code*"] $WS0
 
 # i3 client
 new_window pixel 3
@@ -224,7 +209,11 @@ client.focused #859900 #2AA198 #FFFFFF
 # client.unfocused
 # client.focused_inactive
 # client.urgent
+# client.placeholder
 
+client.background #2B2C2B
+
+bindsym $mod+m bar mode toggle
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -256,3 +245,22 @@ bar {
 #     status_command ~/bin/conky-i3bar
 #     strip_workspace_numbers yes
 # }
+
+
+# 屏保关闭
+# exec --no-startup-id xset s 0
+
+# 透明
+exec --no-startup-id picom -b
+
+########################## 自定义脚本 ############################
+exec --no-startup-id /home/wine/.config/i3/auto_startup.sh
+
+######################### gnome 依赖 ##############################
+
+exec --no-startup-id /usr/libexec/gsd-xsettings &
+# 通知项
+# exec --no-startup-id /usr/lib/notification-daemon/notification-daemon &
+# chrome等钥匙环
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
+

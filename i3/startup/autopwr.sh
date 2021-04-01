@@ -12,7 +12,7 @@ do
     power_status=$(cat /sys/class/power_supply/BAT1/status)
 
     if [ $power_percent -lt $LOW ] && [ $power_status = "Discharging" ]; then
-        xrandr --output eDP-1 --brightness 0.4
+        xrandr --output eDP-1-1 --brightness 0.4
         rofi -e "<span color='#DC322F'><b>电量低，请充电！</b></span>" -markup
         
         # 循环提醒
@@ -35,7 +35,7 @@ do
         done
 
         # 电量高于警戒线或插入电源，恢复亮度
-        xrandr --output eDP-1 --brightness 1
+        xrandr --output eDP-1-1 --brightness 1
     fi
     sleep 1m
 done

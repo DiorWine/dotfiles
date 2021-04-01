@@ -1,7 +1,7 @@
 #!/bin/bash
-intern=eDP-1
-extern1=DP-1
-extern2=DP-2
+intern=eDP-1-1
+extern1=DP-1-1
+extern2=DP-1-2
 
 scan_extern(){
     if xrandr | grep "$extern1 disconnected" > /dev/null; then
