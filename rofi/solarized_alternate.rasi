@@ -39,18 +39,22 @@ window {
     background-color: @background;
     border:           0;
     padding:          5;
+    border-radius: 10px;
 }
 mainbox {
     border:  0;
     padding: 0;
+    border-radius: 10px;
 }
 message {
     border:       1px dash 0px 0px ;
     border-color: @separatorcolor;
     padding:      1px ;
+    border-radius: 10px;
 }
 textbox {
     text-color: @foreground;
+    border-radius: 10px;
 }
 listview {
     fixed-height: 0;
@@ -59,46 +63,57 @@ listview {
     spacing:      2px ;
     scrollbar:    true;
     padding:      2px 0px 0px ;
+    border-radius: 10px;
 }
 element {
     border:  0;
     padding: 1px ;
+    border-radius: 10px;
 }
 element.normal.normal {
     background-color: @normal-background;
     text-color:       @normal-foreground;
+    border-radius: 10px;
 }
 element.normal.urgent {
     background-color: @urgent-background;
     text-color:       @urgent-foreground;
+    border-radius: 10px;
 }
 element.normal.active {
     background-color: @active-background;
     text-color:       @active-foreground;
+    border-radius: 10px;
 }
 element.selected.normal {
     background-color: @selected-normal-background;
     text-color:       @selected-normal-foreground;
+    border-radius: 10px;
 }
 element.selected.urgent {
     background-color: @selected-urgent-background;
     text-color:       @selected-urgent-foreground;
+    border-radius: 10px;
 }
 element.selected.active {
     background-color: @selected-active-background;
     text-color:       @selected-active-foreground;
+    border-radius: 10px;
 }
 element.alternate.normal {
     background-color: @alternate-normal-background;
     text-color:       @alternate-normal-foreground;
+    border-radius: 10px;
 }
 element.alternate.urgent {
     background-color: @alternate-urgent-background;
     text-color:       @alternate-urgent-foreground;
+    border-radius: 10px;
 }
 element.alternate.active {
     background-color: @alternate-active-background;
     text-color:       @alternate-active-foreground;
+    border-radius: 10px;
 }
 scrollbar {
     width:        4px ;
