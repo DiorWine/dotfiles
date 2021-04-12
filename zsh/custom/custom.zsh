@@ -8,7 +8,7 @@ alias ra="ranger"
 alias vi="nvim"
 # alias cls="print '\033c'"
 alias cls="clear"
-alias background="feh --bg-fill"
+alias background="feh --recursive --randomize --bg-fill"
 
 #ros config
 # source ~/WorkSpace/RL_agent/devel/setup.zsh
