@@ -2,12 +2,12 @@
 set $mod Mod4
 set $mov Mod1
 set $WS1  1:  
-set $WS2  2: W
-set $WS3  3: E
-set $WS4  4: R
-set $WS5  5: Y
-set $WS6  6: U
-set $WS7  7: I
+set $WS2  2: 2
+set $WS3  3: 3
+set $WS4  4: 4
+set $WS5  5: 5
+set $WS6  6: 6
+set $WS7  7: 7
 set $WS8  8: 
 set $WS9  9: 
 set $WS0 10: 
@@ -22,15 +22,25 @@ font pango: SauceCodePro Nerd Font Medium 13
 ######################### fn 功能键设置 #########################
 
 # sound control
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl \
+        set-sink-volume @DEFAULT_SINK@   +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl \
+        set-sink-volume @DEFAULT_SINK@   -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl \
+        set-sink-mute   @DEFAULT_SINK@   toggle
+bindsym XF86AudioMicMute     exec --no-startup-id pactl \
+        set-source-mute @DEFAULT_SOURCE@ toggle
+# audio control
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 ######################### 快捷键设置 #########################
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mov+Return exec i3-sensible-terminal && i3 floating toggle
+bindsym $mov+Return exec gnome-terminal
+# bindsym $mov+Return exec i3-sensible-terminal | i3 floating toggle
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -52,8 +62,9 @@ bindsym $mod+t exec nautilus
 bindsym $mod+g exec google-chrome --password-store=gnome --proxy-server="http://127.0.0.1:7890"
 
 # start the screen shot
-bindsym Print exec shutter -s
-bindsym $mod+Shift+p exec shutter -s
+# bindsym Print exec shutter -s
+# bindsym $mod+Shift+p exec shutter -s
+bindsym --release Print exec --no-startup-id import /tmp/latest-screenshot.png
 
 bindsym $mod+backslash exec i3-sensible-terminal -e vi ~/.config/i3/config
 
@@ -146,28 +157,33 @@ bindsym $mov+d focus child
 #########################工作区操作#########################
 
 # switch to workspace
-bindsym $mov+q workspace $WS1
-bindsym $mov+w workspace $WS2
-bindsym $mov+e workspace $WS3
-bindsym $mov+r workspace $WS4
-bindsym $mov+y workspace $WS5
-bindsym $mov+u workspace $WS6
-bindsym $mov+i workspace $WS7
+bindsym $mov+1 workspace $WS1
+bindsym $mov+2 workspace $WS2
+bindsym $mov+3 workspace $WS3
+bindsym $mov+4 workspace $WS4
+bindsym $mov+5 workspace $WS5
+bindsym $mov+6 workspace $WS6
+bindsym $mov+7 workspace $WS7
 bindsym $mov+semicolon workspace $WS8
-bindsym $mov+p workspace $WS9
+bindsym $mov+bracketleft workspace $WS9
 bindsym $mov+apostrophe workspace $WS0
 
 # move focused container to workspace
-bindsym $mov+shift+q move container to workspace $WS1, workspace $WS1
-bindsym $mov+shift+w move container to workspace $WS2, workspace $WS2
-bindsym $mov+shift+e move container to workspace $WS3, workspace $WS3
-bindsym $mov+shift+r move container to workspace $WS4, workspace $WS4
-bindsym $mov+shift+y move container to workspace $WS5, workspace $WS5
-bindsym $mov+shift+u move container to workspace $WS6, workspace $WS6
-bindsym $mov+shift+i move container to workspace $WS7, workspace $WS7
+bindsym $mov+shift+1 move container to workspace $WS1, workspace $WS1
+bindsym $mov+shift+2 move container to workspace $WS2, workspace $WS2
+bindsym $mov+shift+3 move container to workspace $WS3, workspace $WS3
+bindsym $mov+shift+4 move container to workspace $WS4, workspace $WS4
+bindsym $mov+shift+5 move container to workspace $WS5, workspace $WS5
+bindsym $mov+shift+6 move container to workspace $WS6, workspace $WS6
+bindsym $mov+shift+7 move container to workspace $WS7, workspace $WS7
 bindsym $mov+shift+semicolon move container to workspace $WS8, workspace $WS8
-bindsym $mov+shift+p move container to workspace $WS9, workspace $WS9
+bindsym $mov+shift+bracketleft move container to workspace $WS9, workspace $WS9
 bindsym $mov+shift+apostrophe move container to workspace $WS0, workspace $WS0
+
+# Make the currently focused window a scratchpad
+bindsym $mov+Shift+backslash move scratchpad
+# Show the first scratchpad window
+bindsym $mov+backslash scratchpad show
 
 #########################系统操作###########################
 
@@ -204,7 +220,7 @@ mode "$mode_system" {
 new_window pixel 3
 new_float normal
 hide_edge_borders smart
-# 窗口颜色       边框    背景    文字
+# 窗口颜色       边框    背景    文字   <indicator>    <chid_border>
 client.focused #859900 #2AA198 #FFFFFF
 # client.unfocused
 # client.focused_inactive
@@ -218,6 +234,7 @@ bindsym $mod+m bar mode toggle
 # finds out, if available)
 bar {
     # output eDP-1
+    # system tray area place icons
     tray_output primary
 
     status_command ~/.config/i3/conky-i3bar
@@ -250,6 +267,8 @@ bar {
 # 屏保关闭
 # exec --no-startup-id xset s 0
 
+# 网络
+exec --no-startup-id nm-applet
 # 透明
 exec --no-startup-id picom -b
 

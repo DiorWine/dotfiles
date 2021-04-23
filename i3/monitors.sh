@@ -1,13 +1,13 @@
 #!/bin/bash
-intern=eDP-1-1
-extern1=DP-1-1
-extern2=DP-1-2
+intern=eDP-1
+extern1=DP-1
+extern2=DP-2
 
 scan_extern(){
     if xrandr | grep "$extern1 disconnected" > /dev/null; then
         if xrandr | grep "$extern2 disconnected" > /dev/null; then
-            rofi -e "<span color='#DC322F'><b>no extern display</b></span>" -markup
-            xrandr --output $intern --auto
+            notify-send 'no extern display' --urgency=critical
+            xrandr --output $extern1 --off --output $extern2 --off --output $intern --mode 1920x1200
             extern="null"
         else
             extern=$extern2
@@ -22,7 +22,7 @@ rofi_sel(){
     sel=$( echo "仅电脑屏幕|复制|拓展|仅第二屏幕" | rofi -sep '|' -dmenu -lines 4 -p "Display" )
     case $sel in
         "仅电脑屏幕")
-            xrandr --output $extern1 --off --output $extern2 --off --output $intern --auto
+            xrandr --output $extern1 --off --output $extern2 --off --output $intern --mode 1920x1200
         ;;
         "复制")
             xrandr --output $extern --auto --output $intern --same-as $extern
@@ -31,10 +31,10 @@ rofi_sel(){
             orient=$( echo "left|right" | rofi -sep '|' -dmenu -lines 2 -p "Orientation" )
             case $orient in
                 "left")
-                    xrandr --output $intern --auto --output $extern --auto --left-of $intern
+                    xrandr --output $intern --mode 1920x1200 --output $extern --auto --left-of $intern
                 ;;
                 "right")
-                    xrandr --output $intern --auto --output $extern --auto --right-of $intern
+                    xrandr --output $intern --mode 1920x1200 --output $extern --auto --right-of $intern
                 ;;
             esac
             feh --bg-fill ~/Pictures/cyberpunk/wallpaper.jpeg
