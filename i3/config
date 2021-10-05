@@ -38,7 +38,8 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 ######################### 快捷键设置 #########################
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec st
 bindsym $mov+Return exec gnome-terminal
 # bindsym $mov+Return exec i3-sensible-terminal | i3 floating toggle
 
@@ -221,7 +222,7 @@ new_window pixel 3
 new_float normal
 hide_edge_borders smart
 # 窗口颜色       边框    背景    文字   <indicator>    <chid_border>
-client.focused #859900 #2AA198 #FFFFFF
+client.focused #859900 #81d8d0 #FFFFFF
 # client.unfocused
 # client.focused_inactive
 # client.urgent
@@ -247,7 +248,7 @@ bar {
         statusline #00000000
         separator  #3399FF 
         # 工作区颜色         边框    背景    文字 
-        focused_workspace  #3399FF #073642A0 #FFFFFF 
+        focused_workspace  #81d8d0 #005060A0 #FFFFFF
         active_workspace   #FFFFFF #111111A0 #FFFFFF 
         inactive_workspace #111111 #111111A0 #FFFFFF 
         urgent_workspace   #990000 #FFFFFFA0 #FF0000
