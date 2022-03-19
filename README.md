@@ -16,10 +16,10 @@ ubuntu source
 
 ubuntu source
 
-### compton
+### picom
 
 from github:
-    git@github.com:chjj/compton.git
+    git@github.com:yshui/picom.git
 
 ---
 
