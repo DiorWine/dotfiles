@@ -34,6 +34,9 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl \
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+#light control
+bindsym XF86MonBrightnessUp   exec --no-startup-id xrandr --output eDP-1 --brightness 1
+bindsym XF86MonBrightnessDown exec --no-startup-id xrandr --output eDP-1 --brightness 0.4
 
 ######################### 快捷键设置 #########################
 
@@ -77,8 +80,8 @@ floating_modifier Mod1
 # change focus
 bindsym $mov+j focus left
 bindsym $mov+k focus right
-bindsym $mov+l focus down
-bindsym $mov+h focus up
+bindsym $mov+l focus up
+bindsym $mov+h focus down
 
 # alternatively, you can use the cursor keys:
 bindsym $mov+Left focus left
@@ -89,8 +92,8 @@ bindsym $mov+Right focus right
 # move focused window
 bindsym $mov+Shift+j move left
 bindsym $mov+Shift+k move right
-bindsym $mov+Shift+l move down
-bindsym $mov+Shift+h move up
+bindsym $mov+Shift+l move up
+bindsym $mov+Shift+h move down
 
 # alternatively, you can use the cursor keys:
 bindsym $mov+Shift+Left move left
@@ -118,15 +121,15 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym l resize grow height 10 px or 10 ppt
+        bindsym h resize shrink height 10 px or 10 ppt
+        bindsym k resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Up resize grow height 10 px or 10 ppt
+        bindsym Down resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
