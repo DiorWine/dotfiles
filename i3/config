@@ -63,7 +63,7 @@ bindsym $mod+b exec /home/wine/WorkSpace/bilibili_rofi/bilibili_rofi
 bindsym $mod+t exec nautilus
 
 # start the Web browser
-bindsym $mod+g exec google-chrome --password-store=gnome --proxy-server="http://127.0.0.1:7890"
+bindsym $mod+g exec google-chrome --password-store=gnome --proxy-server="socks5://192.168.1.99:7891"
 
 # start the screen shot
 # bindsym Print exec shutter -s
@@ -201,11 +201,13 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 #########################电源管理###########################
-set $mode_system  lock(L) logout(O) reboot(R) shutdown(S) exit(Esc)
+set $Locker i3lock-fancy && sleep 1
+set $mode_system  lock(L) suspend(E) hibernate(H) logout(O) reboot(R) shutdown(S) exit(Esc)
 bindsym $mod+c mode "$mode_system"
 mode "$mode_system" {
-    # bindsym l exec --no-startup-id i3lock -i ~/Pictures/wallpaper/lock/landscape.jpg, mode "default"
-    bindsym l exec --no-startup-id i3lock-fancy, mode "default"
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym o exec --no-startup-id i3-msg exit, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym s exec --no-startup-id systemctl poweroff, mode "default"

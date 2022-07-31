@@ -50,7 +50,7 @@ configuration {
 /*	window-format: "{w}    {i}{c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
-	theme: "/home/wine/.config/rofi/solarized_alternate.rasi";
+	/* theme: "/home/wine/.config/rofi/solarized_alternate.rasi"; */
 /*	color-normal: ;*/
 /*	color-urgent: ;*/
 /*	color-active: ;*/
@@ -138,4 +138,5 @@ configuration {
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
 
-/* vim:ft=css
+//@theme "/home/wine/.config/rofi/solarized_alternate.rasi"
+@theme "/usr/share/rofi/themes/solarized_alternate.rasi"
